@@ -1,0 +1,101 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    // "type": "kitty-direct",
+    "source": "$(find \"$HOME/.config/fastfetch/sauce/\" -name \"*[.png,.txt]\" | sort -R | head -1)",
+    "padding": {
+      "top": 0
+    }
+  },
+  "display": {
+    "separator": "   "
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "  󰮯   System"
+    },
+    {
+      "type": "custom",
+      "format": "┌─────────────────────────────────────────────────────┐"
+    },
+    "break",
+    {
+      "type": "os",
+      "key": "   OS",
+      "keyColor": "red"
+    },
+    {
+      "type": "display",
+      "key": "  󰍹 Display",
+      "keyColor": "green",
+      "format": "{1}x{2} @ {3}Hz"
+    },
+    {
+      "type": "packages",
+      "key": "  󰮯 Packages",
+      "keyColor": "green"
+    },
+    {
+      "type": "terminal",
+      "key": "   Terminal",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "wm",
+      "key": "   Window Manager",
+      "keyColor": "yellow"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "└─────────────────────────────────────────────────────┘"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "  ⚙   Specifications"
+    },
+    {
+      "type": "custom",
+      "format": "┌─────────────────────────────────────────────────────┐"
+    },
+    "break",
+    {
+      "type": "cpu",
+      "format": "{3} x {1} ({temperature})",
+      "temp": true,
+      "key": "  󰍛 CPU",
+      "keyColor": "blue"
+    },
+    {
+      "type": "gpu",
+      "format": "{2} ({temperature})",
+      "temp": true,
+      "key": "   GPU",
+      "keyColor": "blue"
+    },
+    {
+      "type": "memory",
+      "key": "   Memory",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "disk",
+      "key": "   Disk",
+      "keyColor": "magenta",
+      "format": "{1} / {2} ({3})"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "└─────────────────────────────────────────────────────┘"
+    },
+    "break",
+    {
+      "type": "colors",
+      "paddingLeft": 2
+    },
+    "break"
+  ]
+}

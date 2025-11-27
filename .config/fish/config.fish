@@ -1,0 +1,106 @@
+function fish_prompt -d "Write out the prompt"
+    printf '%s@%s %s%s%s > ' $USER $hostname \
+        (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
+end
+
+##
+# AMD GPU
+##
+
+set --export AMD_VULKAN_ICD "RADV"
+# set --export VK_ICD_FILENAMES "/usr/share/vulkan/icd.d/radeon_icd.x86_64.json"
+
+if status is-interactive
+    function fish_greeting
+      fastfetch
+    end
+
+    # Update done.fish
+    set -U __done_min_cmd_duration 10000
+    set -U __done_notification_urgency_level low
+
+    # Aliases
+    alias rmf="rm -rf"
+    alias open="xdg-open"
+    alias rand="openssl rand -base64 32"
+
+    alias c="clear"
+    alias C="clear"
+    alias l="ls -la"
+    alias L="ls -la"
+
+    alias pamcan pacman
+    alias ls 'eza --icons'
+    alias clear "printf '\033[2J\033[3J\033[1;1H'"
+
+    alias gc="git checkout"
+    alias gst="git status"
+    alias glog="git log --oneline"
+    alias gadd="git add ."
+    alias gpush="git push"
+    alias gpull="git pull"
+    alias gbr="git branch"
+
+    alias dps="docker ps"
+    alias dc="docker compose"
+    alias dcu="dc up -d"
+    alias dcd="dc down"
+
+    alias ff="fastfetch"
+    alias ze="zellij"
+    alias gui="gitui"
+    alias lat="laterem"
+    alias mixer="wiremix"
+    alias sp="spotify_player"
+
+    alias wineenv="cat /proc/\"$(pgrep -fl wineserver | awk '{print $1}')\"/environ | tr '\0' '\n' | grep -i wine"
+    alias hyprconf="nvim $HOME/.config/hypr"
+    alias set-wallpaper="mpvpaper -o \"no-audio --panscan=1.0 --loop-playlist\" ALL"
+
+
+    # ------------------------- #
+
+
+    # Binaries
+
+    set PATH $PATH $HOME/.local/bin
+    set PATH $PATH $HOME/.config/hypr/scripts
+
+    # RUST UP
+    set PATH $PATH "$HOME/.cargo/bin"
+
+    # STARSHIP PLUGIN
+    starship init fish | source
+
+    # ZOXIDE PLUGIN
+    zoxide init fish --cmd cd | source
+
+    # NPM PATH
+    set NPM_PACKAGES "$HOME/.npm-packages"
+    set PATH $PATH $NPM_PACKAGES/bin
+    set MANPATH $NPM_PACKAGES/share/man $MANPATH
+
+    # GOLANG
+    set PATH $PATH $HOME/go/bin
+    set PATH $PATH /usr/local/go/bin
+
+    # BUN
+    set --export BUN_INSTALL "$HOME/.bun"
+    set --export PATH $BUN_INSTALL/bin $PATH
+    
+    # DOCKER
+    set DOCKER_HOST "unix://$XDG_RUNTIME_DIR/docker.sock"
+
+    # PYTHON
+    set PYENV_ROOT "$HOME/.pyenv"
+    set --export PATH $PYENV_ROOT/bin $PATH
+
+    pyenv init - | source
+
+    # ZELLIJ
+    eval (zellij setup --generate-auto-start fish | string collect) 
+end
+
+if test -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt
+    cat ~/.local/state/quickshell/user/generated/terminal/sequences.txt
+end
