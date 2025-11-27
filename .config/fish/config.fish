@@ -56,7 +56,8 @@ if status is-interactive
     alias wineenv="cat /proc/\"$(pgrep -fl wineserver | awk '{print $1}')\"/environ | tr '\0' '\n' | grep -i wine"
     alias hyprconf="nvim $HOME/.config/hypr"
     alias set-wallpaper="mpvpaper -o \"no-audio --panscan=1.0 --loop-playlist\" ALL"
-
+    
+    alias ryujinx="$HOME/.local/share/ryujinx/Ryujinx.sh"
 
     # ------------------------- #
 
