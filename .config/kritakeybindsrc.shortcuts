@@ -1,7 +1,8 @@
 [Shortcuts]
 KritaShape/KisToolMultiBrush='
-erase_action=;
+erase_action=C
 eraser_preset_action=E
+file_quit=none
 mirror_canvas_around_canvas=Q
+sample_screen_color=Ctrl+Q
 switchToPreviouslyActiveNode=none
-ten_brushes=1
