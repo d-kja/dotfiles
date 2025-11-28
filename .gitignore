@@ -17,7 +17,9 @@
 !.cargo/env.fish
 
 !.config/kritarc
+!.config/kritadisplayrc
 !.config/kritashortcutsrc
+!.config/kritakeybindsrc.shortcuts
 
 .config/vicinae/*
 !.config/vicinae/
