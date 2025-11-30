@@ -1,5 +1,7 @@
 require("lspconfig").qmlls.setup {
-  cmd = {"qmlls", "-E"}
+  cmd = {
+    "qmlls6", "-E",
+  }
 }
 
 return {}
