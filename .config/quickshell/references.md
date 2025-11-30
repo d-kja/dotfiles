@@ -3,6 +3,7 @@
 ## Documentation
 
 - [Quickshell](https://quickshell.org/docs/v0.1.0/types/Quickshell/)
+- [The QT 6 Book](https://qmlbook.ir/ch04-qmlstart/qml-syntax.html#properties)
 
 ## Dots / Examples
 
