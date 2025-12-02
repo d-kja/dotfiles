@@ -22,9 +22,7 @@ function fish_prompt -d "Write out the prompt"
         (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
 end
 
-function get_branch -d "Get current branch"
-end
-
+# Lazy 101
 function git_commit_push -d "Do everything in one step, cuz lazy"
   set current_branch "$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')"
   set random_name "$(rand)"
