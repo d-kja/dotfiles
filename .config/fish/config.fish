@@ -115,6 +115,12 @@ set --export PATH $BUN_INSTALL/bin $PATH
 set PYENV_ROOT "$HOME/.pyenv"
 set --export PATH $PYENV_ROOT/bin $PATH
 
+# DOTNET
+set --export DOTNET_ROOT "$HOME/.dotnet"
+
+set PATH $PATH "$DOTNET_ROOT"
+set PATH $PATH "$DOTNET_ROOT/tools"
+
 #=-                                                             -=#
 
 ##
