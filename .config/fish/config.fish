@@ -22,6 +22,16 @@ function fish_prompt -d "Write out the prompt"
         (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
 end
 
+function get_branch -d "Get current branch"
+end
+
+function git_commit_push -d "Do everything in one step, cuz lazy"
+  set current_branch "$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')"
+  set random_name "$(rand)"
+
+  git add . && git commit -m $random_name && git push origin $current_branch
+end
+
 # Early return
 if not status is-interactive
     return 0 
@@ -53,6 +63,7 @@ alias gadd="git add ."
 alias gpush="git push"
 alias gpull="git pull"
 alias gbr="git branch"
+alias gps=git_commit_push
 
 alias dps="docker ps"
 alias dc="docker compose"
