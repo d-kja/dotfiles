@@ -60,6 +60,8 @@
 !.config/hypr/scripts/
 !.config/hypr/shaders/
 
+!.config/hlybar
+
 # You can replace this, I use a barebones one cuz of performance (fu ts_server)
 !.config/nvim/
 
