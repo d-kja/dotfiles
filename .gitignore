@@ -21,9 +21,10 @@
 !.config/kritashortcutsrc
 !.config/kritakeybindsrc.shortcuts
 
-.config/vicinae/*
-!.config/vicinae/
-!.config/vicinae/vicinae.json
+.config/qimgv/*
+!.config/qimgv/
+!.config/qimgv/qimgv.conf
+!.config/qimgv/theme.conf
 
 !.config/wireplumber/
 !.config/wireplumber/wireplumber.conf.d/
