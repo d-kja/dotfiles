@@ -15,6 +15,7 @@ image/png=qimgv.desktop
 x-scheme-handler/discord=vesktop.desktop
 image/jpeg=qimgv.desktop
 application/pdf=librewolf.desktop
+image/webp=qimgv.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;
@@ -31,3 +32,4 @@ image/gif=qimgv.desktop;
 image/png=qimgv.desktop;
 image/jpeg=qimgv.desktop;
 application/pdf=librewolf.desktop;
+image/webp=qimgv.desktop;
