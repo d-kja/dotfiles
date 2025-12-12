@@ -111,10 +111,6 @@ set PATH $PATH /usr/local/go/bin
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
-# PYTHON
-set PYENV_ROOT "$HOME/.pyenv"
-set --export PATH $PYENV_ROOT/bin $PATH
-
 # DOTNET
 set --export DOTNET_ROOT "$HOME/.dotnet"
 
@@ -135,10 +131,6 @@ starship init fish | source
 
 # ZOXIDE PLUGIN
 zoxide init fish --cmd cd | source
-
-# PYTHON (Trash that I'm forced to use along with poetry...)
-pyenv init - | source
-
 
 # Forgor
 if test -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt
