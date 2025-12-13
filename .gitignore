@@ -25,6 +25,10 @@
 !.config/qimgv/qimgv.conf
 !.config/qimgv/theme.conf
 
+.config/pipewire/*
+!.config/pipewire/
+!.config/pipewire/pipewire-pulse.conf
+
 !.config/wireplumber/
 !.config/wireplumber/wireplumber.conf.d/
 !.config/wireplumber/wireplumber.conf.d/*
