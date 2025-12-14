@@ -54,7 +54,12 @@
   font-weight: 400;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: inherit;
   font-weight: inherit;
 }
@@ -64,7 +69,8 @@ a {
   text-decoration: inherit;
 }
 
-b, strong {
+b,
+strong {
   font-weight: bolder;
 }
 
@@ -77,14 +83,6 @@ button {
   border-radius: 0;
   background-color: transparent;
   opacity: 1;
-
-  &:active {
-    > * {
-    }
-  }
-
-  &:hover {
-  }
 }
 
 button {
@@ -96,28 +94,25 @@ button {
 
 menubutton {
   padding: 0;
+
   button {
     padding: unset;
     margin: unset;
-
-    &:hover {
-    }
   }
 }
 
 
 /* NOTIFICATIONS */
 .notification {
-  &-popup {
-    animation: fade-in 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+  background: var(--background);
+  border-radius: 0 0 0 var(--radii-2);
 
+  &-popup {
     min-width: 28rem;
 
-    margin: var(--m-3) var(--m-2) 0 0;
-    padding: var(--p-2) var(--p-4);
-    border-radius: var(--radii-2);
+    margin: 0;
+    padding: var(--p-3) var(--p-4);
 
-    background: var(--background);
     color: var(--foreground);
 
     & .header {
@@ -125,6 +120,7 @@ menubutton {
 
       & .app-name {
         font-weight: 600;
+        font-size: var(--base-4);
         text-transform: capitalize;
       }
 
@@ -136,14 +132,5 @@ menubutton {
     & .content {
       padding: var(--p-4) 0px;
     }
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }
