@@ -27,7 +27,7 @@
         },
         "transparency": {
             "enabled": true,
-            "base": 0.75,
+            "base": 0.85,
             "layers": 0.4
         }
     },
