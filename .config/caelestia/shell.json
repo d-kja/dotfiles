@@ -9,11 +9,11 @@
             "family": {
                 "clock": "Rubik",
                 "material": "Material Symbols Rounded",
-                "mono": "CaskaydiaCove NF",
+                "mono": "CaskaydiaCove Nerd Font",
                 "sans": "Rubik"
             },
             "size": {
-                "scale": 1
+                "scale": 0.98
             }
         },
         "padding": {
@@ -145,8 +145,8 @@
         }
     },
     "border": {
-        "rounding": 12,
-        "thickness": 4
+        "rounding": 16,
+        "thickness": 0
     },
     "dashboard": {
         "enabled": true,
