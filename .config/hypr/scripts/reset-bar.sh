@@ -1,8 +1,8 @@
 !#/bin/bash
 
-echo "Killing waybar instance"
-pkill waybar
+echo "Killing qs instance"
+killall qs
 sleep 1
 
-echo "Starting waybar"
-waybar &
+echo "Starting qs"
+caelestia shell -d
