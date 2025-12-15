@@ -37,6 +37,25 @@
             "audio": ["wiremix"],
             "playback": ["mpv"],
             "explorer": ["nemo"]
+        },
+        "idle": {
+            "lockBeforeSleep": false,
+            "inhibitWhenAudio": true,
+            "timeouts": [
+                {
+                    "timeout": 99999,
+                    "idleAction": "lock"
+                },
+                {
+                    "timeout": 999999,
+                    "idleAction": "dpms off",
+                    "returnAction": "dpms on"
+                },
+                {
+                    "timeout": 999999,
+                    "idleAction": ["systemctl", "suspend-then-hibernate"]
+                }
+            ]
         }
     },
     "background": {
