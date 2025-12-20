@@ -1,39 +1,246 @@
-# Dotfile
+# Linux Dotfiles
 
-No script ready, cherry pick whatever you feel like using.
+> Just another generic Arch Linux rice with Hyprland
 
-## Some useful packages & drivers 
+## Overview
 
-For reference, this is outdated and I'll have to re-do this.
+This is a custom Linux desktop environment configuration built around Hyprland as the Wayland compositor. It includes configurations for various tools to create my workflow. Currently using Caelestia (QuickShell-based) as the desktop shell, but I'm planning to create a new version with a custom one... I just some free time to do that ;-; 
+
+## Components
+
+### Core
+
+- **Window Manager**: [Hyprland](https://hypr.land/) - Dynamic tiling Wayland compositor
+- **Shell**: [Caelestia Shell](https://github.com/caelestia-dots/shell) - QuickShell-based desktop shell (current)
+- **Terminal**: [Alacritty](https://github.com/alacritty/alacritty) - GPU-accelerated terminal emulator
+- **Shell**: [Fish](https://fishshell.com/) - Friendly interactive shell
+- **Prompt**: [Starship](https://starship.rs/) - Cross-shell prompt
+
+### Utilities
+
+- **System Info**: Fastfetch
+- **Multiplexer**: Zellij
+- **Editor**: Lazyvim
+- **Media Player**: MPV
+- **Image Viewer**: QIMGV
+- **File Explorer**: Nemo
+- **Status Bar**: Caelestia (I have some configuration for a barebones waybar, but I'll remove it later) 
+
+### Additional
+
+- Wireplumber - Audio session manager
+- XDG Desktop Portal - Desktop integration
+- Hyprlock configuration (I need to remove this)
+
+## Installation
+
+> **Note**: This is a WIP configuration. Not all components may be fully configured or stable.
+
+### Dependencies
+
+#### Essential Packages
 
 ```bash
-# CPU Specific
-intel-ucode  or  amd-ucode
+# CPU microcode (choose one based on your processor)
+sudo pacman -S intel-ucode  # Intel processors
+sudo pacman -S amd-ucode    # AMD processors
 
-# Drivers
-ffmpeg gst-plugins-ugly gst-plugins-good gst-plugins-base gst-plugins-bad gst-libav gstreamer
+# Core system packages
+sudo pacman -S hyprland hyprlock hyprpaper hypridle \
+               pipewire wireplumber \
+               xdg-desktop-portal-hyprland \
+               qt5-wayland qt6-wayland
+
+# Terminal & Shell
+sudo pacman -S alacritty fish starship
+
+# System utilities
+sudo pacman -S fastfetch eza \
+               git wget curl ufw \
+               zip unzip ntfs-3g \
+               fwupd dosfstools mtools \
+               reflector pacman-contrib
+
+# Wayland utilities
+sudo pacman -S grim slurp wl-clipboard wl-clip-persist
+
+# Multimedia
+sudo pacman -S mpv ffmpeg \
+               gst-plugins-ugly gst-plugins-good \
+               gst-plugins-base gst-plugins-bad \
+               gst-libav gstreamer
+
+# Audio
+sudo pacman -S pipewire-audio pipewire-alsa pipewire-pulse \
+               pipewire-jack wireplumber wiremix
 
 # Fonts
-noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-liberation ttf-dejavu
+sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji \
+               ttf-liberation ttf-dejavu \
+               ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd
 
-# Useful
-mpv mpvpaper git wget curl vim neovim firefox yay zip unzip ntfs-3g flatpak ufw fwupd dosfstools mtools reflector pacman-contrib
+# Development tools
+# For runtimes/language specific tools, you can install them separately: go, rustup, node, bun, zig...
+sudo pacman -S vim neovim base-devel cmake ninja \
+               zellij zoxide fzf fd ripgrep
 
-# Dots (Not all of them are here though, I forgor the majority)
-go zig zellij zoxide fzf fd ripgrep go rustup bun hyprshell
+# Applications
+sudo pacman -S firefox
 ```
 
-## Extra
+#### AUR Packages
 
-- Enable Colors & Multilib: `sudo nvim /etc/pacman.conf`
-- Update mirrors: `sudo reflector --country Brazil --protocol https --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Syyu`
-- Enable firewall: `sudo systemctl enable ufw.service`
-- Update cache timer: `sudo systemctl enable --now paccache.timer`
-- Automate systemd-boot update: `sudo systemctl enable systemd-boot-update.service`
-- Update zram size: `sudo nvim /etc/systemd/zram-generator.conf`
+```bash
+# Install an AUR helper first (if not already installed)
+sudo pacman -S --needed git base-devel && 
+git clone https://aur.archlinux.org/yay.git &&
+cd yay &&
+makepkg -si
 
-- References: 
-    - [diolinux](https://plus.diolinux.com.br/t/dicas-sobre-instalacao-de-pacotes-basicos-e-configuracao-do-arch/68708) - [PR-BR]
-    - [wiki lol](https://wiki.archlinux.org/title/General_recommendations)
-    - [audio](https://forum.manjaro.org/t/how-to-make-linux-sound-great/146143) - [Kind of useful, but if you're gaming you might have to tweak a bit.]
-    - [audio popping/crackling sound](https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Troubleshooting#loud-pops-when-starting-a-sound)
+# Desktop shell & utilities
+yay -S quickshell-git \
+       hyprshell \
+       mpvpaper # If you want to setup video based wpp
+
+# Optional: Additional tools
+yay -S spotify_player \
+       gitui
+```
+
+#### Optional Dependencies
+
+```bash
+# File manager
+sudo pacman -S nemo
+
+# Image viewer
+sudo pacman -S qimgv
+
+# Docker (if needed)
+sudo pacman -S docker docker-compose
+sudo systemctl enable docker.service
+
+# Gaming/Emulation
+sudo pacman -S steam # (https://wiki.archlinux.org/title/Steam) 
+
+# Proton Up (You can also follow this guide to setup everything: https://github.com/popcar2/SimpleLinuxGamingGuide)
+yay -S protonup-qt # (https://github.com/DavidoTek/ProtonUp-Qt)
+
+# A nice way to setup games
+# You can also use Heroic/bottles...
+yay -S faugus-launcher # (https://github.com/Faugus/faugus-launcher)
+yay -S ryujinx
+
+# Additional CLI tools
+sudo pacman -S htop btop
+```
+
+#### Post-Installation Setup
+
+After installing the packages, initialize required tools:
+
+```bash
+# Initialize Rust toolchain
+rustup default stable
+
+# Set Fish as default shell (optional)
+chsh -s /usr/bin/fish
+
+# Enable Docker service (if installed)
+sudo systemctl enable --now docker.service
+sudo usermod -aG docker $USER
+```
+
+
+Just remember to cherry-pick configurations you want to use config directory and test everything, it's not a fully fledged configuration:
+
+```bash
+# Example: Move specific configs
+mv [repository]/.config/fish ~/.config/
+
+# Refresh font cache
+fc-cache -fv
+```
+
+## System Configuration
+
+### Recommended Setup
+
+Enable colors and multilib repositories:
+
+```bash
+sudo nvim /etc/pacman.conf
+```
+
+Update mirror list:
+
+```bash
+sudo reflector --country Brazil --protocol https --sort rate \
+  --save /etc/pacman.d/mirrorlist && sudo pacman -Syyu
+```
+
+Enable services:
+
+```bash
+# Firewall
+sudo systemctl enable ufw.service
+
+# Package cache cleanup
+sudo systemctl enable --now paccache.timer
+
+# Systemd-boot auto-update
+sudo systemctl enable systemd-boot-update.service
+```
+
+Adjust zram size (optional):
+
+```bash
+sudo nvim /etc/systemd/zram-generator.conf
+```
+
+## Project Structure
+
+```
+.
+├── .config/
+│   ├── hypr/              # Hyprland configuration
+│   ├── caelestia/         # Caelestia shell config
+│   ├── quickshell/        # QuickShell components
+│   ├── alacritty/         # Terminal config
+│   ├── fish/              # Shell configuration 
+│   ├── waybar/            # Status bar config (Barebones, it's optional you can remove this)
+│   ├── nvim/              # Neovim configuration (Basic Lazyvim config with a few changes)
+│   ├── mpv/               # Media player config
+│   ├── zellij/            # Terminal multiplexer (just like tmux)
+│   └── ...
+├── .local/                # Fonts/icons
+├── .icons/                # Custom icons
+└── .cargo/                # Fish environment file
+```
+
+## Preview
+
+### Video
+
+...
+
+
+## Known Issues
+
+It's messy, so don't expect a clear setup/configuration.
+
+- I'm constatly tweaking the configuration, so it will break stuff. I recommend just cloning and creating a new git repository.
+- Some components may be incomplete or experimental
+- Package list may be outdated
+
+## Resources
+
+- [Arch Wiki - General Recommendations](https://wiki.archlinux.org/title/General_recommendations)
+- [Diolinux Guide](https://plus.diolinux.com.br/t/dicas-sobre-instalacao-de-pacotes-basicos-e-configuracao-do-arch/68708) (PT-BR)
+- [Linux Audio Setup](https://forum.manjaro.org/t/how-to-make-linux-sound-great/146143)
+- [PipeWire Troubleshooting](https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Troubleshooting)
+
+## References
+
+- [Caelestia Shell](https://github.com/caelestia-dots/shell)
+- [End4](https://github.com/end-4/dots-hyprland)
