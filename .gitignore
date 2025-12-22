@@ -104,6 +104,7 @@
 .local/share/*
 .local/share/icons/*
 .local/share/fonts/*
+!.local/share/fonts/*/.uuid
 
 !.local/
 !.local/share/
