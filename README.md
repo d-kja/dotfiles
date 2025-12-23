@@ -220,10 +220,11 @@ sudo nvim /etc/systemd/zram-generator.conf
 
 ## Preview
 
-### Video
+### Screenshots
 
-...
+<img width="3444" height="1440" alt="image" src="https://github.com/user-attachments/assets/77bb3e0d-3379-45bb-8799-22c3930fbb66" />
 
+<img width="3442" height="1439" alt="image" src="https://github.com/user-attachments/assets/c9f81022-3318-4c3b-9cdc-c22c11ef04f0" />
 
 ## Known Issues
 
