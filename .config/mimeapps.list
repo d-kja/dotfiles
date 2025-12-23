@@ -9,13 +9,14 @@ application/x-extension-shtml=firefox.desktop
 application/xhtml+xml=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
-inode/directory=org.kde.dolphin.desktop
+inode/directory=nemo.desktop
 image/gif=qimgv.desktop
 image/png=qimgv.desktop
 x-scheme-handler/discord=vesktop.desktop
 image/jpeg=qimgv.desktop
 application/pdf=librewolf.desktop
 image/webp=qimgv.desktop
+application/x-gnome-saved-search=nemo.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;
