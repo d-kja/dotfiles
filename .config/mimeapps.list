@@ -17,6 +17,7 @@ image/jpeg=qimgv.desktop
 application/pdf=librewolf.desktop
 image/webp=qimgv.desktop
 application/x-gnome-saved-search=nemo.desktop
+x-scheme-handler/stabilitymatrix=stabilitymatrix.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;
