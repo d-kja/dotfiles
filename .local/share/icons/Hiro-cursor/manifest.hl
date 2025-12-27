@@ -1,0 +1,4 @@
+name = hiro-cursor
+description = Hiro cursor theme 
+version = v0.1
+cursors_directory = hyprcursors
