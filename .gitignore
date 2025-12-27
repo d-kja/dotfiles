@@ -21,6 +21,11 @@
 !.config/kritashortcutsrc
 !.config/kritakeybindsrc.shortcuts
 
+!.config/qt5ct
+!.config/qt5ct/**
+!.config/qt6ct
+!.config/qt6ct/**
+
 .config/caelestia/*
 !.config/caelestia
 !.config/caelestia/shell.json
