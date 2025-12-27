@@ -21,8 +21,15 @@
 !.config/kritashortcutsrc
 !.config/kritakeybindsrc.shortcuts
 
+!.config/gtk-3.0
+!.config/gtk-3.0/**
+
+!.config/gtk-4.0
+!.config/gtk-4.0/**
+
 !.config/qt5ct
 !.config/qt5ct/**
+
 !.config/qt6ct
 !.config/qt6ct/**
 
