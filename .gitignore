@@ -113,6 +113,10 @@
 !.config/zellij/layouts/
 !.config/zellij/layouts/*
 
+.config/docker/*
+!.config/docker
+!.config/docker/daemon.json
+
 .local/*
 .local/share/*
 .local/share/icons/*
