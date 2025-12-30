@@ -93,8 +93,7 @@
 !.config/hyprshell/
 
 # Pretty good, but idk if I'll use this
-.config/vicinae/*
-!.config/vicinae/
+!.config/yazi/
 !.config/vicinae/vicinae.json
 
 # Temporary replacement
