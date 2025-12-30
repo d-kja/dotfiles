@@ -7,6 +7,8 @@
 # GREETING
 function fish_greeting
     fastfetch
+    mommy # Yes.
+    echo ""
 end
 
 # UPDATE DONE.FISH
@@ -69,6 +71,7 @@ alias dcu="dc up -d"
 alias dcd="dc down"
 
 alias ff="fastfetch"
+alias mm="mommy"
 alias ze="zellij"
 alias gui="gitui"
 alias lat="laterem"
