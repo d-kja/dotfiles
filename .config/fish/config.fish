@@ -69,6 +69,7 @@ alias dps="docker ps"
 alias dc="docker compose"
 alias dcu="dc up -d"
 alias dcd="dc down"
+alias dct="oxker --host unix://$XDG_RUNTIME_DIR/docker.sock"
 
 alias ex="TERM=xterm-kitty yazi"
 alias ff="fastfetch"
