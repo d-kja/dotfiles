@@ -67,14 +67,6 @@
 3. **Debouncing** - Config saves, search queries
 4. **Object Pooling** - Repeater/ListView reuse
 
-## Performance Benchmarks
-
-| Project | Startup Time | Memory Usage | QML Files |
-|---------|--------------|--------------|-----------|
-| Caelestia | ~800ms | 80-120MB | 266 |
-| end-4/ii | ~1200ms | 120-180MB | 556 |
-| Zaphkiel | ~600ms | 60-90MB | ~100 |
-
 ## Credits
 
 Special thanks to:
