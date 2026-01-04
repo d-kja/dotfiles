@@ -1,0 +1,3 @@
+module qs.core.services
+singleton Audio Audio.qml
+singleton HyprlandService Hyprland.qml
