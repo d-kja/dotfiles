@@ -2,13 +2,13 @@ AlsoSaveAsKra=false
 AntialiasSelectionOutline=false
 ArtColorSel.ColorSpace=0
 ArtColorSel.InversedSaturation=false
-ArtColorSel.Light=0.42846605914642416
+ArtColorSel.Light=0.27026583359108736
 ArtColorSel.LightPieces=11
 ArtColorSel.NumRings=7
 ArtColorSel.RingPieces=12
-ArtColorSel.SelColorH=0.9922155999636425
-ArtColorSel.SelColorS=0.5459497306983647
-ArtColorSel.SelColorX=0.42846605914642416
+ArtColorSel.SelColorH=0.8180002159593996
+ArtColorSel.SelColorS=0.22220856692283258
+ArtColorSel.SelColorX=0.27026583359108736
 ArtColorSel.defaultHueSteps=12
 ArtColorSel.defaultSaturationSteps=7
 ArtColorSel.defaultValueScaleSteps=11
@@ -44,11 +44,11 @@ Krita/Ocio/OcioConfigPath=
 Krita/Ocio/OcioLockColorVisualRepresentation=false
 Krita/Ocio/OcioLutPath=
 Krita/Ocio/UseOcio=false
-LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB r="0.0761882960796356" space="sRGB-elle-V2-g10.icc" g="0.0666208863258362" b="0.124773025512695"/>\n</LastBackGroundColor>\n
+LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB g="0.244658589363098" b="0.233256503939629" r="0.504842519760132" space="sRGB-elle-V2-g10.icc"/>\n</LastBackGroundColor>\n
 LastEraser_-1=Awez Flat Shader
-LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB r="0.462088972330093" space="sRGB-elle-V2-g10.icc" g="0.0703593492507935" b="0.0886549204587936"/>\n</LastForeGroundColor>\n
-LastPreset=b) Airbrush Soft
-LastPreset_-1=b) Airbrush Soft
+LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB g="0.0434827208518982" b="0.0901719927787781" r="0.0859946310520172" space="sRGB-elle-V2-g10.icc"/>\n</LastForeGroundColor>\n
+LastPreset=b) Basic-5 Size Opacity
+LastPreset_-1=b) Basic-5 Size Opacity
 LineSmoothingDelayDistance=50
 LineSmoothingDistance=50
 LineSmoothingFinishStabilizedCurve=true
