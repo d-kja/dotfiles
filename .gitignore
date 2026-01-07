@@ -44,6 +44,7 @@
 
 .config/pipewire/*
 !.config/pipewire/
+!.config/pipewire/pipewire.conf
 !.config/pipewire/pipewire-pulse.conf
 
 !.config/wireplumber/
