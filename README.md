@@ -238,8 +238,13 @@ It's messy, so don't expect a clear setup/configuration.
 
 - [Arch Wiki - General Recommendations](https://wiki.archlinux.org/title/General_recommendations)
 - [Diolinux Guide](https://plus.diolinux.com.br/t/dicas-sobre-instalacao-de-pacotes-basicos-e-configuracao-do-arch/68708) (PT-BR)
+
+- [Pipewire](https://wiki.archlinux.org/title/PipeWire)
 - [Linux Audio Setup](https://forum.manjaro.org/t/how-to-make-linux-sound-great/146143)
+- [Professional Audio](https://wiki.archlinux.org/title/Professional_audio)
+- [RT Pipewire](https://wiki.archlinux.org/title/Realtime_process_management)
 - [PipeWire Troubleshooting](https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Troubleshooting)
+
 
 ## References
 
