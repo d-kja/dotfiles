@@ -50,7 +50,8 @@ symbol = " "
 symbol = " "
 
 [gcloud]
-symbol = "  "
+symbol = " "
+format  = "on [$symbol $account]($style)"
 disabled = true
 
 [git_branch]
