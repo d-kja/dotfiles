@@ -51,12 +51,13 @@ symbol = " "
 
 [gcloud]
 symbol = "  "
+disabled = true
 
 [git_branch]
 symbol = " "
 
 [git_commit]
-tag_symbol = '  '
+tag_symbol = "  "
 
 [golang]
 symbol = " "
