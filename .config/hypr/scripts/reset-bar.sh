@@ -6,4 +6,5 @@ killall quickshell
 sleep 1
 
 echo "Starting qs"
-caelestia shell -d
+qs -c caelestia
+# caelestia shell -d
