@@ -166,3 +166,6 @@ zoxide init fish --cmd cd | source
 if test -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt
     cat ~/.local/state/quickshell/user/generated/terminal/sequences.txt
 end
+
+# opencode
+fish_add_path /home/d-kja/.opencode/bin
