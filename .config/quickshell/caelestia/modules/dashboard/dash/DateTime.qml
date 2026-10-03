@@ -1,17 +1,18 @@
 pragma ComponentBehavior: Bound
 
-import qs.components
-import qs.services
-import qs.config
 import QtQuick
 import QtQuick.Layouts
+import Caelestia.Config
+import Caelestia.I18n
+import qs.components
+import qs.services
 
 Item {
     id: root
 
     anchors.top: parent.top
     anchors.bottom: parent.bottom
-    implicitWidth: Config.dashboard.sizes.dateTimeWidth
+    implicitWidth: Tokens.sizes.dashboard.dateTimeWidth
 
     ColumnLayout {
         anchors.left: parent.left
@@ -24,17 +25,14 @@ Item {
             Layout.alignment: Qt.AlignHCenter
             text: Time.hourStr
             color: Colours.palette.m3secondary
-            font.pointSize: Appearance.font.size.extraLarge
-            font.family: Appearance.font.family.clock
-            font.weight: 600
+            font: Tokens.font.clock.size(28).weight(Font.DemiBold).build()
         }
 
         StyledText {
             Layout.alignment: Qt.AlignHCenter
             text: "•••"
             color: Colours.palette.m3primary
-            font.pointSize: Appearance.font.size.extraLarge * 0.9
-            font.family: Appearance.font.family.clock
+            font: Tokens.font.clock.size(28 * 0.9).build()
         }
 
         StyledText {
@@ -42,23 +40,47 @@ Item {
             Layout.alignment: Qt.AlignHCenter
             text: Time.minuteStr
             color: Colours.palette.m3secondary
-            font.pointSize: Appearance.font.size.extraLarge
-            font.family: Appearance.font.family.clock
-            font.weight: 600
+            font: Tokens.font.clock.size(28).weight(Font.DemiBold).build()
         }
 
         Loader {
+            Layout.topMargin: -(((item as StyledText)?.font.pointSize ?? 0) * 0.4)
+            Layout.alignment: Qt.AlignHCenter
+            asynchronous: true
+            active: Config.dashboard.showClockSeconds
+            visible: active
+
+            sourceComponent: StyledText {
+                text: "•••"
+                color: Colours.palette.m3primary
+                font: Tokens.font.clock.size(28 * 0.9).build()
+            }
+        }
+        Loader {
+            Layout.topMargin: -(((item as StyledText)?.font.pointSize ?? 0) * 0.4)
+            Layout.alignment: Qt.AlignHCenter
+            asynchronous: true
+            active: Config.dashboard.showClockSeconds
+            visible: active
+
+            sourceComponent: StyledText {
+                text: Time.format("ss")
+                color: Colours.palette.m3secondary
+                font: Tokens.font.clock.size(28).weight(Font.DemiBold).build()
+            }
+        }
+
+        Loader {
+            asynchronous: true
             Layout.alignment: Qt.AlignHCenter
 
-            active: Config.services.useTwelveHourClock
+            active: Units.twelveHourClock
             visible: active
 
             sourceComponent: StyledText {
                 text: Time.amPmStr
                 color: Colours.palette.m3primary
-                font.pointSize: Appearance.font.size.large
-                font.family: Appearance.font.family.clock
-                font.weight: 600
+                font: Tokens.font.clock.size(18).weight(Font.DemiBold).build()
             }
         }
     }

@@ -1,8 +1,9 @@
 #pragma once
 
-#include "service.hpp"
 #include <qqmlintegration.h>
 #include <qtimer.h>
+
+#include "service.hpp"
 
 namespace caelestia::services {
 
@@ -11,7 +12,7 @@ class AudioProcessor : public QObject {
 
 public:
     explicit AudioProcessor(QObject* parent = nullptr);
-    ~AudioProcessor();
+    ~AudioProcessor() override;
 
     void init();
 
@@ -19,15 +20,11 @@ public slots:
     void start();
     void stop();
 
-signals:
-    void activated();
-    void deactivated();
-
 protected:
     virtual void process() = 0;
 
 private:
-    QTimer* m_timer;
+    QTimer* m_timer = nullptr;
 };
 
 class AudioProvider : public Service {
@@ -35,7 +32,7 @@ class AudioProvider : public Service {
 
 public:
     explicit AudioProvider(QObject* parent = nullptr);
-    ~AudioProvider();
+    ~AudioProvider() override;
 
 protected:
     AudioProcessor* m_processor;

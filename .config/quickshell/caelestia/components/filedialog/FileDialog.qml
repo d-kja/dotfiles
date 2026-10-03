@@ -1,18 +1,19 @@
 pragma ComponentBehavior: Bound
 
-import qs.components
-import qs.services
-import Quickshell
 import QtQuick
 import QtQuick.Layouts
+import Quickshell
+import Caelestia.I18n
+import qs.components
+import qs.services
 
 LazyLoader {
     id: loader
 
     property list<string> cwd: ["Home"]
-    property string filterLabel: "All files"
+    property string filterLabel: Tr.tr("All files")
     property list<string> filters: ["*"]
-    property string title: qsTr("Select a file")
+    property string title: Tr.tr("Select a file")
 
     signal accepted(path: string)
     signal rejected
@@ -37,7 +38,7 @@ LazyLoader {
 
         readonly property bool selectionValid: {
             const file = folderContents.currentItem?.modelData;
-            return (file && !file.isDir && (filters.includes("*") || filters.includes(file.suffix))) ?? false;
+            return (file && !file.isDir && (filters.includes("*") || filters.some(filter => filter.toLowerCase() === file.suffix.toLowerCase()))) ?? false;
         }
 
         function accepted(path: string): void {
@@ -50,7 +51,10 @@ LazyLoader {
 
         implicitWidth: 1000
         implicitHeight: 600
+        minimumSize.width: 400
+        minimumSize.height: 300
         color: Colours.tPalette.m3surface
+        surfaceFormat.opaque: false
         title: loader.title
 
         onVisibleChanged: {

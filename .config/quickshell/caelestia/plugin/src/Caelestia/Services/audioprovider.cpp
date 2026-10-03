@@ -1,9 +1,16 @@
 #include "audioprovider.hpp"
 
+#include <qloggingcategory.h>
+#include <qthread.h>
+
 #include "audiocollector.hpp"
 #include "service.hpp"
-#include <qdebug.h>
-#include <qthread.h>
+
+namespace {
+
+Q_LOGGING_CATEGORY(lcAp, "caelestia.services.ap", QtInfoMsg)
+
+} // namespace
 
 namespace caelestia::services {
 
@@ -16,12 +23,12 @@ AudioProcessor::~AudioProcessor() {
 
 void AudioProcessor::init() {
     m_timer = new QTimer(this);
-    m_timer->setInterval(static_cast<int>(ac::CHUNK_SIZE * 1000.0 / ac::SAMPLE_RATE));
+    m_timer->setInterval(static_cast<int>(ac::k_chunkSize * 1000.0 / ac::k_sampleRate));
     connect(m_timer, &QTimer::timeout, this, &AudioProcessor::process);
 }
 
 void AudioProcessor::start() {
-    emit activated();
+    QMetaObject::invokeMethod(&AudioCollector::instance(), &AudioCollector::ref, Qt::QueuedConnection, this);
     if (m_timer) {
         m_timer->start();
     }
@@ -31,7 +38,7 @@ void AudioProcessor::stop() {
     if (m_timer) {
         m_timer->stop();
     }
-    emit deactivated();
+    QMetaObject::invokeMethod(&AudioCollector::instance(), &AudioCollector::unref, Qt::QueuedConnection, this);
 }
 
 AudioProvider::AudioProvider(QObject* parent)
@@ -48,7 +55,7 @@ AudioProvider::~AudioProvider() {
 
 void AudioProvider::init() {
     if (!m_processor) {
-        qWarning() << "AudioProvider::init: attempted to init with no processor set";
+        qCWarning(lcAp) << "init: attempted to init with no processor set";
         return;
     }
 
@@ -58,13 +65,6 @@ void AudioProvider::init() {
     connect(m_thread, &QThread::started, m_processor, &AudioProcessor::init);
     connect(m_thread, &QThread::finished, m_processor, &AudioProcessor::deleteLater);
     connect(m_thread, &QThread::finished, m_thread, &QThread::deleteLater);
-
-    connect(m_processor, &AudioProcessor::activated, this, [this]() {
-        AudioCollector::instance().ref(this);
-    });
-    connect(m_processor, &AudioProcessor::deactivated, this, [this]() {
-        AudioCollector::instance().unref(this);
-    });
 
     m_thread->start();
 }

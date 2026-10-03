@@ -3,7 +3,7 @@ name: Create release
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   build-and-release:
@@ -12,26 +12,30 @@ jobs:
     permissions:
       contents: write
 
+    env:
+      RELEASE_NAME: caelestia-shell-${{ github.ref_name }}
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source
+        uses: actions/checkout@v7
 
-      - name: Create packages
+      - name: Build release archive
         run: |
-          mkdir -p release
-          rsync -av \
-            --exclude='release' \
-            --exclude='.*' \
-            --exclude='nix' \
-            --exclude='flake.lock' \
-            --exclude='flake.nix' \
-            . release
-          tar -czf caelestia-shell-${{ github.ref_name }}.tar.gz release
-          cp caelestia-shell-${{ github.ref_name }}.tar.gz caelestia-shell-latest.tar.gz
+          mkdir -p ".release/$RELEASE_NAME"
+          rsync -av --exclude={'.*',nix,flake.lock,flake.nix} . ".release/$RELEASE_NAME"
+          echo "$GITHUB_SHA" > ".release/$RELEASE_NAME/REVISION"
+          tar -C .release -czf "$RELEASE_NAME.tar.gz" "$RELEASE_NAME"
+          cp "$RELEASE_NAME.tar.gz" caelestia-shell-latest.tar.gz
 
-      - name: Create release
-        uses: softprops/action-gh-release@v2
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v3
         with:
           files: |
-            caelestia-shell-${{ github.ref_name }}.tar.gz
+            ${{ env.RELEASE_NAME }}.tar.gz
             caelestia-shell-latest.tar.gz
           generate_release_notes: true
+
+      - name: Update stable branch
+        run: |
+          git branch -f stable "$GITHUB_SHA"
+          git push origin stable --force
