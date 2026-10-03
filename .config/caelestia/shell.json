@@ -519,7 +519,7 @@
     "services": {
         "audioIncrement": 0.1,
         "brightnessIncrement": 0.1,
-        "clockFormat": "TwelveHour",
+        "clockFormat": "TwentyFourHour",
         "dataUnits": "Decimal",
         "defaultPlayer": "spotify_player",
         "gpuType": "",
