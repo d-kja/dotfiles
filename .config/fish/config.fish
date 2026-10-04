@@ -154,6 +154,39 @@ set PATH $PATH "$ANDROID_HOME/cmdline-tools/latest/bin"
 ##
 
 # ZELLIJ
+# Zellij sets ZELLIJ=0 on shells inside a session. The snippet below treats
+# any value as "already inside" and will not launch again. Drop an inherited
+# marker unless zellij is this shell's parent (through nested shells).
+begin
+    if set -q ZELLIJ
+        set -l pid $fish_pid
+        set -l in_pane 0
+        while test "$pid" -gt 1
+            set -l next (string match -r --groups-only 'PPid:\s*(\d+)' </proc/$pid/status)
+            if not set -q next[1]
+                break
+            end
+            set pid $next[1]
+            set -l comm (string trim </proc/$pid/comm)
+            if test "$comm" = zellij
+                set in_pane 1
+                break
+            end
+            if not contains -- $comm fish bash zsh sh dash nu sudo su
+                break
+            end
+        end
+        if test $in_pane -eq 0
+            set -l leaked (set --names | string match -r '^ZELLIJ$|^ZELLIJ_.+')
+            if set -q leaked[1]
+                set leaked (string match -v -r '^ZELLIJ_AUTO_' -- $leaked)
+            end
+            if set -q leaked[1]
+                set -e $leaked
+            end
+        end
+    end
+end
 eval (zellij setup --generate-auto-start fish | string collect)
 
 # STARSHIP PLUGIN
