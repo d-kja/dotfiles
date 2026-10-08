@@ -27,6 +27,8 @@ return {
       -- terminal = { enabled = false },
       -- win = { enabled = false },
     },
+    -- Drops Snacks spec keymaps (including explorer on <leader>e / <leader>E).
+    -- Picker, terminal, and the other modules above stay enabled.
     keys = false,
   },
   {
